@@ -41,9 +41,9 @@ export async function fetchUserContributions(token:string , username:string) {
     const octokit = new Octokit({auth:token})
 
     const query = `
-    query($username:String!){
-        user(login:$username){
-            contributionCollection {
+    query($username: String!){
+        user(login: $username){
+            contributionsCollection {
                 contributionCalendar{
                     totalContributions
                     weeks {
@@ -57,7 +57,9 @@ export async function fetchUserContributions(token:string , username:string) {
             }
         }
     }
-    `
+    `;
+
+
     // interface contributiondata {
     //     user: {
     //         contributionCollection: {
@@ -79,8 +81,9 @@ export async function fetchUserContributions(token:string , username:string) {
         const response: any = await octokit.graphql(query, {
             username
         })
-        return response.user.contributionCollection.contributionCalendar
+        return response.user.contributionsCollection.contributionCalendar
     } catch (error){
-
+        console.error("Error fetching contributions:", error);
+        return null;
     }
 }
