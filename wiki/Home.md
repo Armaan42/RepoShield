@@ -21,3 +21,4 @@ Use the sidebar on the right to navigate through the documentation:
 5. **[API & Commands](API)** - Internal API routes, webhooks, and background events.
 6. **[Contributing](Contributing)** - How to help build and improve Reposhield.
 7. **[FAQ & Troubleshooting](FAQ)** - Common errors and how to fix them.
+8. **[Team & Credits](Team)** - Meet the people behind the project.
