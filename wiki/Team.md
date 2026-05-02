@@ -4,7 +4,7 @@ Meet the team behind **RepoShield**. Our project is built on the collaboration o
 
 ---
 
-## 🛡️ Armaan
+##  Armaan
 **Role:** Project Lead & AI/RAG Specialist
 - **Focus:** System Architecture & Machine Learning.
 - **Key Contributions:** 
@@ -14,7 +14,7 @@ Meet the team behind **RepoShield**. Our project is built on the collaboration o
   - **Lead Researcher** on automated Application Security Auditing logic and threat detection.
   - High-level **Architecture Design** of the project's specialized Feature-Module pattern.
 
-## ⚙️ Ansh
+##  Ansh
 **Role:** Infrastructure & Backend Engineer
 - **Focus:** Scalability & Event-Driven Architecture.
 - **Key Contributions:** 
@@ -24,7 +24,7 @@ Meet the team behind **RepoShield**. Our project is built on the collaboration o
   - **Prisma Schema** design and database relationship management.
   - Implementation of robust **Environment Security** and multi-stage secret management.
 
-## 📊 Suryansh
+##  Suryansh
 **Role:** Frontend & Analytics Developer
 - **Focus:** Data Visualization & User Experience.
 - **Key Contributions:** 
@@ -34,7 +34,7 @@ Meet the team behind **RepoShield**. Our project is built on the collaboration o
   - Secure authentication integration via **Better Auth** with GitHub OAuth providers.
   - Developing the project's **Design System** and reusable UI components via Shadcn UI.
 
-## 🔐 Riya
+##  Riya
 **Role:** Security & Business Logic Engineer
 - **Focus:** Compliance, Payments & Security Auditing.
 - **Key Contributions:** 

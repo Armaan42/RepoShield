@@ -4,12 +4,12 @@ Reposhield uses a tiered subscription model to manage resource consumption (espe
 
 ## Tier Definitions
 
-### 🆓 FREE Tier (Default)
+###  FREE Tier (Default)
 - **Repositories**: Maximum 5 connected repositories.
 - **Reviews**: Maximum 5 AI reviews per repository.
 - **Support**: Community support only.
 
-### 🚀 PRO Tier
+###  PRO Tier
 - **Repositories**: Unlimited.
 - **Reviews**: Unlimited.
 - **AI Model**: Access to larger context windows and higher-priority processing.
