@@ -9,7 +9,7 @@ import { checkout, customer } from "@/lib/auth-client"
 import { useSearchParams } from "next/navigation"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { useQuery } from "@tanstack/react-query"
-import { useState, useEffect } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { toast } from "sonner"
 
 import { getSubscriptionData, syncSubscriptionStatus } from "@/module/payment/action"
@@ -34,7 +34,7 @@ const PLAN_FEATURES = {
   ],
 }
 
-export default function SubscriptionPage() {
+function SubscriptionContent() {
     const [checkoutLoading, setCheckoutLoading] = useState(false)
     const [portalLoading, setPortalLoading] = useState(false)
     const [syncLoading, setSyncLoading] = useState(false)
@@ -318,5 +318,17 @@ export default function SubscriptionPage() {
         </Card>
       </div>
     </div>
+  )
+}
+
+export default function SubscriptionPage() {
+  return (
+    <Suspense fallback={
+      <div className="flex items-center justify-center min-h-[400px]">
+        <Spinner />
+      </div>
+    }>
+      <SubscriptionContent />
+    </Suspense>
   )
 }
