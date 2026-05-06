@@ -4,7 +4,7 @@ Reposhield uses a strict **Feature-Module Architecture** to keep the Next.js `ap
 
 ---
 
-## 📂 Global Directory Structure
+##  Global Directory Structure
 
 ```text
 reposhield/
@@ -12,7 +12,7 @@ reposhield/
 ├── components/           # Generic, reusable UI components (Buttons, Inputs, Modals)
 ├── inngest/              # Background job orchestrators and queue logic
 ├── lib/                  # Global utilities (Auth instance, Prisma client, Pinecone client)
-├── module/               # ⚠️ Core Business Logic (The brain of the app)
+├── module/               #  Core Business Logic (The brain of the app)
 ├── prisma/               # Database schema and migration histories
 ├── public/               # Static assets (images, SVGs)
 └── wiki/                 # Project documentation
@@ -20,7 +20,7 @@ reposhield/
 
 ---
 
-## 🧩 The `/module` Directory (File-by-File Breakdown)
+##  The `/module` Directory (File-by-File Breakdown)
 
 The `/module` directory is the most important part of the codebase. It contains specific folders for each major feature. UI components can import from `module/`, but `module/` should **never** import UI components.
 
@@ -64,7 +64,7 @@ Handles the process of linking a user's GitHub repositories to Reposhield.
 
 ---
 
-## 🔄 Interaction Flows (How it all connects)
+##  Interaction Flows (How it all connects)
 
 Reposhield relies on a strict flow of data between these modules to keep the UI fast while handling heavy AI computations in the background.
 

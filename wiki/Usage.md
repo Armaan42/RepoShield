@@ -45,7 +45,7 @@ As your team opens PRs, Reposhield tracks the results to provide gamified analyt
 1. Go to the **Insights** tab in the left sidebar.
 2. **The Contribution Graph**: View a 7-day or 30-day trend chart (powered by Recharts). This visualizes your team's code review frequency.
 3. **The Badging Engine**: Did you fix a nasty memory leak? Did you secure an API route? The AI automatically parses its own reviews and awards you dynamic badges:
-   - 🔴 *Production Hazard Prevented*
+   -  *Production Hazard Prevented*
    - 🟡 *Performance Optimizer*
    - 🟢 *Clean Code Champion*
 

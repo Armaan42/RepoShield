@@ -12,7 +12,7 @@ We support full Light and Dark mode using Tailwind's `dark:` classes and Next-Th
 - **Background (Light)**: Off-white (`bg-slate-50`) for clean contrast.
 ## Gamification & Badge Colors
 Colors carry semantic meaning across the application, especially in the Insights dashboard:
-- 🔴 **Red (Destructive)**: Security vulnerabilities or production hazards.
+-  **Red (Destructive)**: Security vulnerabilities or production hazards.
 - 🟡 **Yellow (Warning)**: Performance bottlenecks or architectural anti-patterns.
 - 🟢 **Green (Success)**: Clean code, optimizations, and flawless reviews.
 ## Typography

@@ -4,7 +4,7 @@ Reposhield is a highly distributed system. To run it on your local machine, you'
 
 ---
 
-## 🛠️ Prerequisites
+##  Prerequisites
 Before cloning the repository, ensure you have the following installed:
 - **Node.js** (v18 or higher)
 - **Bun** (We use Bun as our primary package manager and test runner for speed)
@@ -66,7 +66,7 @@ ngrok http 3000
 ```
 This gives you a public URL (e.g., `https://abc-123.ngrok-free.app`). 
 
-**⚠️ CRITICAL NGROK STEPS:** 
+** CRITICAL NGROK STEPS:** 
 1. Copy the ngrok URL and paste it into your GitHub Webhook URL setting (append `/api/webhooks/github`).
 2. Update the `NEXT_PUBLIC_APP_BASE_URL` in your `.env` file to match this ngrok URL. If you skip this, GitHub OAuth redirects will fail.
 
@@ -78,7 +78,7 @@ Starts a visual database editor on `http://localhost:5555`. This is incredibly u
 
 ---
 
-## 🚨 Troubleshooting
+##  Troubleshooting
 
 - **"Better Auth Redirect Mismatch"**: If you get an error logging in with GitHub, ensure your GitHub OAuth App's *Authorization callback URL* exactly matches your `BETTER_AUTH_URL` + `/api/auth/callback/github`.
 - **"Inngest App Not Found"**: If the Inngest UI (`localhost:8288`) says "Waiting for apps", ensure you have `INNGEST_DEV=1` in your `.env` and restart your Next.js server.

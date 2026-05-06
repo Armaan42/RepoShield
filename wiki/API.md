@@ -4,7 +4,7 @@ This document provides a comprehensive overview of the external webhook endpoint
 
 ---
 
-## 🌐 External Webhooks (API Routes)
+##  External Webhooks (API Routes)
 
 These endpoints are exposed to the public internet but are strictly secured via cryptographic signature validation. They do not return HTML; they only accept `POST` requests and return JSON.
 
@@ -31,7 +31,7 @@ These endpoints are exposed to the public internet but are strictly secured via 
 
 ---
 
-## ⚡ Internal API (Next.js Server Actions)
+##  Internal API (Next.js Server Actions)
 
 Instead of traditional REST API routes (`/api/users`), Reposhield utilizes Next.js **Server Actions** for all frontend-to-backend communication. These are imported directly into React components.
 
@@ -51,7 +51,7 @@ Instead of traditional REST API routes (`/api/users`), Reposhield utilizes Next.
 
 ---
 
-## 🚚 Background Events (Inngest Payloads)
+##  Background Events (Inngest Payloads)
 
 Inngest relies on strictly typed event names and payloads to trigger background workers.
 
@@ -82,7 +82,7 @@ Inngest relies on strictly typed event names and payloads to trigger background 
 
 ---
 
-## 💻 Prisma Database Commands
+##  Prisma Database Commands
 
 When developing locally or managing the production database, these are the core commands:
 

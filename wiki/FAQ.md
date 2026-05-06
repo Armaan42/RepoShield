@@ -4,7 +4,7 @@ Running a complex application with webhooks, vector databases, and background jo
 
 ---
 
-## 🌐 Webhooks & External API Issues
+##  Webhooks & External API Issues
 
 ### Q: I opened a Pull Request, but nothing happened. No review was posted.
 **Troubleshooting steps:**
@@ -21,7 +21,7 @@ Running a complex application with webhooks, vector databases, and background jo
 
 ---
 
-## 🧠 AI, Vector Search & RAG Issues
+##  AI, Vector Search & RAG Issues
 
 ### Q: Inngest throws an `AI_RetryError` or "Quota Exceeded".
 **A:** This means you have hit the rate limit for your Google Gemini API key. 
@@ -39,7 +39,7 @@ Running a complex application with webhooks, vector databases, and background jo
 
 ---
 
-## 🗄️ Database & Prisma Issues
+##  Database & Prisma Issues
 
 ### Q: I get a "PrismaClientInitializationError" or "Can't reach database server".
 **A:** Your `DATABASE_URL` in `.env` is incorrect, or your Postgres server isn't running. Double-check your connection string. If you are using Neon.tech, ensure your IP address isn't being blocked by their firewall rules.
@@ -56,7 +56,7 @@ This rebuilds the hidden `node_modules/.prisma/client` folder with your new type
 
 ---
 
-## 🔑 Authentication Issues
+##  Authentication Issues
 
 ### Q: Better Auth throws "Invalid Origin" or redirects to `localhost:3000` when logging in via ngrok.
 **A:** Better Auth requires you to explicitly trust external origins. Ensure your `auth.ts` file includes your ngrok URL in the `trustedOrigins` array, or set the `BETTER_AUTH_URL` environment variable to your ngrok URL while developing locally.

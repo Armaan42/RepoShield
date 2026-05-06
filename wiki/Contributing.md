@@ -46,7 +46,7 @@ We strictly enforce **Conventional Commits** to auto-generate our changelogs.
 2. Open a Pull Request against the `main` branch of the official Reposhield repo.
 3. Provide a clear description of what you changed, why you changed it, and include screenshots if you modified the UI.
 
-**🤖 Note**: Since you are contributing to Reposhield... Reposhield itself will automatically review your Pull Request! Please wait 1-2 minutes for the bot to post its feedback, and address any security or performance concerns it raises before requesting a human review.
+** Note**: Since you are contributing to Reposhield... Reposhield itself will automatically review your Pull Request! Please wait 1-2 minutes for the bot to post its feedback, and address any security or performance concerns it raises before requesting a human review.
 
 ---
 
