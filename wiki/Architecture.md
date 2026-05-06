@@ -25,7 +25,7 @@ flowchart TD
     WEBHOOK -->|Validates Signature & Dispatches| INNGEST_Q[Inngest Job Queue]
     WEBHOOK -->|Returns 200 OK immediately| GITHUB
     
-    subgraph Background Worker (Inngest)
+    subgraph BackgroundWorker [Background Worker (Inngest)]
         INNGEST_Q -->|github/pr.review| WORKER[Inngest State Machine]
         WORKER -->|Step 1: Fetch Diff| OCTOKIT[GitHub API]
         WORKER -->|Step 2: Generate Vector Query| EMBEDDING[Gemini Embedding Model]
@@ -37,7 +37,7 @@ flowchart TD
     WORKER -->|Post Comment via Octokit| GITHUB
     WORKER -->|Save Review History| DB[(PostgreSQL Database)]
 
-    subgraph Dashboard UI
+    subgraph DashboardUI [Dashboard UI]
         DB --> INSIGHTS[Next.js Server Actions]
         INSIGHTS --> UI[React Dashboard Charts & Badges]
         UI -->|Quota Enforcement| POLAR[Polar.sh Subscription Sync]
