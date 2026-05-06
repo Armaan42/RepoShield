@@ -82,6 +82,16 @@ Inngest relies on strictly typed event names and payloads to trigger background 
 
 ---
 
+## GitHub Webhook Events
+
+Reposhield listens for two primary types of events to trigger its AI analysis pipeline.
+
+| Event Name | Triggers On | Action |
+| :--- | :--- | :--- |
+| `pull_request` | PR opened or updated (non-bot). | Dispatches `github/pr.review` Inngest event. |
+| `pull_request_target` | PR opened or updated (including fork PRs). | Dispatches `github/pr.review` Inngest event. |
+
+
 ##  Prisma Database Commands
 
 When developing locally or managing the production database, these are the core commands:

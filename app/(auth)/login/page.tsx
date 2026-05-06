@@ -1,18 +1,20 @@
 import React, { Suspense } from 'react'
 import LoginUI from '@/module/auth/components/login-ui'
 import { requireUnAuth } from '@/module/auth/utils/auth-utils'
-import { unstable_noStore as noStore } from 'next/cache'
 
-const LoginPage = async () => {
-    noStore();
+async function AuthGuard({ children }: { children: React.ReactNode }) {
     await requireUnAuth();
+    return <>{children}</>;
+}
+
+const LoginPage = () => {
     return (
-        <Suspense>
-            <div>
+        <Suspense fallback={null}>
+            <AuthGuard>
                 <LoginUI />
-            </div>
+            </AuthGuard>
         </Suspense>
     )
 }
 
-export default LoginPage
+export default LoginPage

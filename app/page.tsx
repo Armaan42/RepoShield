@@ -1,7 +1,16 @@
 import { requireAuth } from "@/module/auth/utils/auth-utils";
 import { redirect } from "next/navigation";
+import { Suspense } from "react";
 
-export default async function Home() {
+async function AuthGuard() {
   await requireAuth();
-  return redirect('/dashboard');
+  redirect('/dashboard');
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={null}>
+      <AuthGuard />
+    </Suspense>
+  )
 }

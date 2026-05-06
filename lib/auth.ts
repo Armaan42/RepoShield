@@ -30,7 +30,8 @@ export const auth = betterAuth({
         "http://localhost:3000", 
         "https://20e5-122-161-243-96.ngrok-free.app",
         "https://reposhield-azure.vercel.app",
-        process.env.BETTER_AUTH_URL as string
+        process.env.BETTER_AUTH_URL as string,
+        process.env.NEXT_PUBLIC_APP_BASE_URL as string
     ].filter(Boolean),
     plugins: [
         polar({
@@ -48,7 +49,7 @@ export const auth = betterAuth({
                     authenticatedUsersOnly: true
                 }),
                 portal({
-                    returnUrl:process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000/dashboard"
+                    returnUrl: process.env.NEXT_PUBLIC_APP_BASE_URL || "http://localhost:3000/dashboard"
                 }),
                 usage(),
                 webhooks({
