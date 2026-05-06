@@ -20,57 +20,69 @@ reposhield/
 
 ---
 
-## 🧩 The `/module` Directory (Domain Logic)
+## 🧩 The `/module` Directory (File-by-File Breakdown)
 
-The `/module` directory is the most important part of the codebase. It contains specific folders for each major feature. **Rules of the module directory:**
-1. UI components (`app/`) can import from `module/`.
-2. `module/` can import from `lib/`.
-3. `module/` should **never** import UI components.
+The `/module` directory is the most important part of the codebase. It contains specific folders for each major feature. UI components can import from `module/`, but `module/` should **never** import UI components.
 
-### `module/ai`
+### 1. `module/ai/` (The Generative & RAG Brain)
 Handles everything related to Large Language Models and Vector Search.
-- **`actions/index.ts`**: Contains `reviewPullRequest()`, the function that checks usage limits and triggers the Inngest queue.
-- **`lib/rag.ts`**: Contains the complex math and logic to chunk codebase files, generate embeddings via Gemini, and upsert them into Pinecone.
+- **`actions/index.ts`**: Contains the `reviewPullRequest()` Server Action. This acts as the gatekeeper. When triggered, it checks the user's `UserUsage` table in Prisma. If they have sufficient quota, it dispatches the `github/pr.review` Inngest event. If not, it throws a quota error.
+- **`lib/rag.ts`**: The heaviest math file in the project. 
+  - Contains `generateEmbeddings()` which calls the `text-embedding-004` Gemini model.
+  - Contains `upsertToPinecone()` which formats the vectors and pushes them to the Pinecone index.
+  - Contains `queryCodebaseContext()` which takes new PR code, turns it into a vector, and queries Pinecone for the Top 5 most semantically similar files to inject into the LLM prompt.
 
-### `module/dashboard`
-Powers the analytics and UI data aggregation.
-- **`actions/insights.ts`**: Contains `getDeveloperInsights()`. This function aggregates hundreds of AI reviews, groups them by UTC date for Recharts, and parses the Markdown text to award Gamification Badges (e.g., matching "SQL Injection" to the "Security Guardian" badge).
-- **`actions/index.ts`**: Simple data fetchers for recent reviews and active repositories.
+### 2. `module/payment/` (Monetization & Quotas)
+Isolates all Polar.sh checkout logic and usage limits.
+- **`action/index.ts`**: Contains `syncSubscriptionStatus()`. Because webhooks can sometimes fail, this function is called manually by the frontend after a user upgrades. It uses the Polar SDK to fetch the user's active subscriptions and hard-updates the `subscriptionTier` in Prisma.
+- **`config/polar.ts`**: A singleton file that initializes the official `@polar-sh/sdk` client using the `POLAR_ACCESS_TOKEN`.
+- **`lib/subscription.ts`**: The strict business rules engine.
+  - Contains `canConnectRepository(userId)`: Returns false if a FREE user has >= 5 repos.
+  - Contains `canCreateReview(userId, repoId)`: Returns false if a FREE user has >= 5 reviews for that specific repo.
 
-### `module/payment`
-Isolates all monetization logic.
-- **`action/index.ts`**: Contains `syncSubscriptionStatus()`, forcing a manual check against the Polar.sh API to ensure a user's Free/Pro tier is perfectly synchronized with the database.
-- **`lib/subscription.ts`**: Core utility functions like `canConnectRepository()` and `canCreateReview()`. These are heavily used as guardrails before executing expensive operations.
+### 3. `module/dashboard/` (Data Aggregation)
+Powers the analytics and UI data calculations.
+- **`actions/insights.ts`**: The analytics engine. Contains `getDeveloperInsights()`. It queries Prisma for all `Review` records. It normalizes dates using `setUTCHours(0,0,0,0)` to ensure accurate Recharts rendering regardless of server timezone. It also runs keyword heuristics against the AI Markdown text to award Gamification Badges (e.g., matching the word "SQL Injection" to the "Security Guardian" badge).
+- **`actions/index.ts`**: Simple data fetchers like `getRecentReviews()` and `getActiveRepositories()` to populate the dashboard tables.
+- **`components/contribution-graph.tsx`**: A Recharts client component that takes the data from `insights.ts` and renders the interactive 7-day or 30-day activity trend line.
 
-### `module/repository`
-Handles the onboarding of new GitHub codebases.
-- **`actions/index.ts`**: Functions to fetch a user's installed GitHub repositories and link them to the local PostgreSQL database.
+### 4. `module/github/` (External Integrations)
+Handles direct communication with the GitHub API.
+- **`lib/github.ts`**: Initializes the `Octokit` client using the GitHub App Private Key. 
+  - Contains `fetchPullRequestDiff()`: Downloads the `.patch` file of the PR.
+  - Contains `postPullRequestComment()`: Takes the final generated Markdown string from Gemini and posts it directly to the GitHub PR timeline via the REST API.
+
+### 5. `module/auth/` (Session Management)
+Handles user login states and UI buttons.
+- **`components/login-ui.tsx` & `logout.tsx`**: Reusable React components containing the buttons that trigger Better Auth's `signIn.social({ provider: 'github' })` methods.
+- **`utils/auth-utils.ts`**: Helper functions like `requireAuth()`. These are used inside other Server Actions to quickly extract the active session cookie and verify the user is logged in before executing sensitive database queries.
+
+### 6. `module/repository/` (Onboarding Codebases)
+Handles the process of linking a user's GitHub repositories to Reposhield.
+- **`actions/index.ts`**: Contains `linkRepository()`. It takes a GitHub repo ID, verifies the user owns it, and saves a new `Repository` record in Prisma. It then triggers the `github/repo.index` Inngest event to start generating vector embeddings.
+- **`hooks/use-connect-repository.ts`**: A React hook used in the UI. It manages the `isLoading` and `error` states while the user waits for the repository to be linked and indexed in the background.
 
 ---
 
 ## 🔄 Interaction Flows (How it all connects)
 
-Reposhield relies on a strict flow of data between its modules to keep the UI fast while handling heavy AI computations in the background.
+Reposhield relies on a strict flow of data between these modules to keep the UI fast while handling heavy AI computations in the background.
 
 ### 1. UI to Server Actions (The Dashboard Flow)
-When a user visits a dashboard page (e.g., `/app/dashboard/insights/page.tsx`), the React Server Component directly calls a function from the `/module` directory.
-- **Example Flow**: `InsightsPage` calls `getDeveloperInsights()`.
-- **Interaction**: The `getDeveloperInsights` function uses `lib/auth.ts` to get the current user's session. It then uses `lib/db.ts` to query Prisma for the user's reviews. Finally, it formats the data and returns it to the UI component, which renders the Recharts graphs.
+- **Flow**: `InsightsPage` UI -> calls `module/dashboard/actions/getDeveloperInsights()` -> queries Prisma -> returns data to UI.
 - **Core Rule**: UI components *never* talk directly to the database.
 
 ### 2. Webhooks to Background Workers (The Event Flow)
-When GitHub fires a webhook, it must be acknowledged within 10 seconds, or GitHub will mark it as failed. 
-- **Example Flow**: A developer opens a Pull Request. GitHub sends a POST request to `/api/webhooks/github`.
-- **Interaction**: The webhook route validates the payload. Instead of processing the review there, it uses the Inngest client to dispatch an event: `inngest.send({ name: "github/pr.review" })`. The API route immediately returns `200 OK`.
-- **Handoff**: The Inngest server receives this event and triggers the `generateReview` function on a separate thread.
+- **Flow**: GitHub fires webhook -> `/api/webhooks/github` validates signature -> dispatches event via Inngest client -> immediately returns `200 OK`.
+- **Handoff**: The Inngest server triggers the `generateReview` function on a separate thread.
 
 ### 3. The AI Review Pipeline (The Processing Flow)
-Once the `generateReview` Inngest function starts running, it acts as an orchestrator across the modules.
-- **Interaction 1 (Fetch)**: It uses Octokit to fetch the specific Git Diff (`.patch` file).
-- **Interaction 2 (RAG Retrieval)**: It takes the changed code and uses the embedding functions in `module/ai` to query the Vector Database, retrieving the 5 most relevant codebase files to provide architectural context.
-- **Interaction 3 (Generation)**: It combines the Git Diff and the RAG Context, and calls the Google Gemini model.
-- **Interaction 4 (Commenting)**: Once Gemini returns the markdown review, the function writes the result to the Database and uses Octokit again to post the comment on the GitHub PR timeline.
+Inside the Inngest background worker:
+- **Interaction 1 (Fetch)**: Uses `module/github/lib/github.ts` to fetch the `.patch` diff.
+- **Interaction 2 (RAG)**: Uses `module/ai/lib/rag.ts` to query Pinecone for the 5 most relevant codebase files.
+- **Interaction 3 (Generation)**: Combines Diff + RAG Context and calls Gemini.
+- **Interaction 4 (Commenting)**: Uses `module/github/lib/github.ts` to post the AI review back to GitHub.
 
 ### 4. Subscription State Syncing (The Payment Flow)
-- **Interaction**: When a user upgrades, Polar.sh hits our `/api/webhooks/polar` route, which updates the user's `subscriptionTier` in Prisma.
-- **Failsafe**: If the webhook fails or is delayed, the frontend `/app/dashboard/subscription/page.tsx` uses a React `useEffect` to manually call `syncSubscriptionStatus()` when the user is redirected back with `?success=true`.
+- **Interaction**: Polar.sh webhook hits `/api/webhooks/polar` -> updates `subscriptionTier` in Prisma.
+- **Failsafe**: If webhook fails, frontend calls `module/payment/action/syncSubscriptionStatus()` to manually fetch status from Polar.sh API and hard-update the database.
