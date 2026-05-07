@@ -19,7 +19,11 @@ export const auth = betterAuth({
             scope: ["repo"]
         }
     },
-    trustedOrigins: ["http://localhost:3000", "https://20e5-122-161-243-96.ngrok-free.app"],
+    trustedOrigins: [
+        "http://localhost:3000", 
+        "https://20e5-122-161-243-96.ngrok-free.app",
+        process.env.BETTER_AUTH_URL as string
+    ].filter(Boolean),
     plugins: [
         polar({
             client: polarClient,
