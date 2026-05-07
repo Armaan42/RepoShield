@@ -57,7 +57,7 @@ export function RepositoryList(){
             if (result?.success) {
                 queryClient.invalidateQueries({ queryKey: ["connected-repositories"] })
                 queryClient.invalidateQueries({ queryKey: ["dashboard-stats"] })
-                toast.success(`Disconnected ${result.count} repositories`)
+                toast.success(`Disconnected ${'count' in result ? result.count : ''} repositories`)
                 setDisconnectAllOpen(false)
             } else {
                 toast.error(result?.error || "Failed to disconnect repositories")

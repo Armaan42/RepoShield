@@ -64,7 +64,7 @@ export const auth = betterAuth({
                         });
 
                         if (user) {
-                            await updateUserTier(user.id, user.subscriptionTier as any, "CANCELED")
+                            await updateUserTier(user.id, user.subscriptionTier as any, "CANCELLED")
                         }
                     },
                     onSubscriptionRevoked: async (payload) => {
@@ -85,7 +85,7 @@ export const auth = betterAuth({
                     onCustomerCreated: async (payload) => {
                         const user = await prisma.user.findUnique({
                             where: {
-                                email: payload.data.email
+                                email: payload.data.email ?? undefined
                             }
                         });
 
