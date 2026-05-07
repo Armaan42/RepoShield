@@ -8,6 +8,7 @@ import { updateUserTier, updatePolarCustomerId } from "@/module/payment/lib/subs
 export const auth = betterAuth({
     secret: process.env.BETTER_AUTH_SECRET,
     baseURL: process.env.BETTER_AUTH_URL,
+    trustHost: true,
     database: prismaAdapter(prisma, {
         provider: "postgresql",
     }),
@@ -18,6 +19,10 @@ export const auth = betterAuth({
             clientSecret: process.env.GITHUB_CLIENT_SECRET!,
             scope: ["repo"]
         }
+    },
+    advanced: {
+        crossSubDomainCookies: true,
+        defaultCrossOrigin: true,
     },
     trustedOrigins: [
         "http://localhost:3000", 
