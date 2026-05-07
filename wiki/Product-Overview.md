@@ -50,9 +50,9 @@ Unlike traditional static analysis tools (e.g., SonarQube) that only look for sy
 
 ## 7. User Personas
 Understanding who uses RepoShield helps drive feature development and marketing:
-- **"The Overwhelmed Maintainer" (Alex):** Manages a popular open-source repo. Receives 50+ PRs a week from beginners. Needs RepoShield to automatically filter out bad code and provide gentle feedback so Alex doesn't have to manually review every typo.
-- **"The Fast-Paced CTO" (Sarah):** Runs a startup with 5 engineers. They don't have time for 3-day review cycles. She buys the **PRO** tier so her team can ship features daily while RepoShield acts as the safety net for security and architecture standards.
-- **"The Solo Developer" (Jordan):** Working on a side hustle. Wants to write enterprise-grade code but doesn't have a senior engineer to pair program with. Uses the **FREE** tier for instant feedback.
+- **"The Overwhelmed Maintainer" (Ansh):** Manages a popular open-source repo. Receives 50+ PRs a week from beginners. Needs RepoShield to automatically filter out bad code and provide gentle feedback so Ansh doesn't have to manually review every typo.
+- **"The Fast-Paced CTO" (Riya):** Runs a startup with 5 engineers. They don't have time for 3-day review cycles. She buys the **PRO** tier so her team can ship features daily while RepoShield acts as the safety net for security and architecture standards.
+- **"The Solo Developer" (Suryansh):** Working on a side hustle. Wants to write enterprise-grade code but doesn't have a senior engineer to pair program with. Uses the **FREE** tier for instant feedback.
 
 ## 8. Go-To-Market (GTM) Strategy
 - **Product Hunt Launch:** Initial burst of acquisition targeting early-adopter developers and indie hackers.
