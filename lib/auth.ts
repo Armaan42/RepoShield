@@ -21,7 +21,9 @@ export const auth = betterAuth({
         }
     },
     advanced: {
-        crossSubDomainCookies: true,
+        crossSubDomainCookies: {
+            enabled: true
+        },
         defaultCrossOrigin: true,
     },
     trustedOrigins: [
