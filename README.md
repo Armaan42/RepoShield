@@ -2,6 +2,8 @@
 
 **RepoShield: Developed an AI-Powered Automated Code Review Platform with Integrated Application Security Auditing**
 
+📚 **[View the full Non-Technical Product Overview here!](./wiki/Product-Overview.md)**
+
 ## Abstract
 
 The proposed project is a comprehensive, sophisticated, AI-powered platform strategically designed to automate and enhance the modern software development lifecycle by revolutionizing the traditional code review process. In fast-paced development environments, manual code reviews frequently become a severe bottleneck, heavily reliant on senior engineers and prone to inconsistencies. 
