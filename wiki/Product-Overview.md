@@ -53,6 +53,7 @@ Understanding who uses RepoShield helps drive feature development and marketing:
 - **"The Overwhelmed Maintainer" (Ansh):** Manages a popular open-source repo. Receives 50+ PRs a week from beginners. Needs RepoShield to automatically filter out bad code and provide gentle feedback so Ansh doesn't have to manually review every typo.
 - **"The Fast-Paced CTO" (Riya):** Runs a startup with 5 engineers. They don't have time for 3-day review cycles. She buys the **PRO** tier so her team can ship features daily while RepoShield acts as the safety net for security and architecture standards.
 - **"The Solo Developer" (Suryansh):** Working on a side hustle. Wants to write enterprise-grade code but doesn't have a senior engineer to pair program with. Uses the **FREE** tier for instant feedback.
+- **"The AI Visionary" (Armaan):** Wants to leverage cutting-edge Retrieval-Augmented Generation (RAG) to ensure the entire engineering team stays ahead of the curve. Uses RepoShield to map out complex logic and detect deep vulnerabilities before they ever hit production.
 
 ## 8. Go-To-Market (GTM) Strategy
 - **Product Hunt Launch:** Initial burst of acquisition targeting early-adopter developers and indie hackers.
@@ -71,3 +72,35 @@ To measure the business success of RepoShield, we track:
 - **Phase 2 (Growth):** Team accounts and organizational billing (allowing CTOs to pay for their whole team).
 - **Phase 3 (Enterprise):** Custom AI instructions (allowing teams to upload their own internal style guides so RepoShield reviews code strictly according to company-specific rules).
 - **Phase 4 (Ecosystem):** IDE Integrations (VS Code extension) to provide RepoShield insights before the PR is even opened.
+
+## 11. Common Use Cases
+
+RepoShield handles the heavy lifting so developers can focus on building features. Here are the most common ways our users rely on the platform:
+
+1. **Automated Security Auditing:** Catching SQL injections, XSS vulnerabilities, and leaked secrets the moment the code is pushed.
+2. **Enforcing Coding Standards:** Ensuring junior developers adhere to the company's established style guides and best practices without requiring a senior engineer to manually point out formatting issues.
+3. **Accelerating PR Approvals:** Removing the "waiting for review" bottleneck. RepoShield provides the first pass instantly, allowing human reviewers to confidently approve PRs in a fraction of the time.
+4. **Reducing Technical Debt:** Detecting logical flaws and suggesting performance optimizations (like adding indexes to database queries or refactoring nested loops).
+
+### Visualizing the Workflow
+
+```mermaid
+graph TD
+    %% Define modern, clean styles
+    classDef trigger fill:#10b981,stroke:#047857,stroke-width:2px,color:#fff,font-weight:bold;
+    classDef engine fill:#3b82f6,stroke:#1d4ed8,stroke-width:2px,color:#fff,font-weight:bold;
+    classDef usecase fill:#1e293b,stroke:#475569,stroke-width:2px,color:#fff;
+    classDef result fill:#8b5cf6,stroke:#6d28d9,stroke-width:2px,color:#fff,font-weight:bold;
+
+    A[Developer opens a Pull Request]:::trigger --> B{RepoShield AI Engine}:::engine
+    
+    B -->|Use Case 1| C[Security Audit: Detects SQLi, XSS]:::usecase
+    B -->|Use Case 2| D[Code Standards: Enforces style guides]:::usecase
+    B -->|Use Case 3| E[Bug Detection: Catches logical errors]:::usecase
+    
+    C --> F[Posts constructive review comment on GitHub]:::result
+    D --> F
+    E --> F
+    
+    F --> G[Developer fixes code quickly & ships faster!]:::trigger
+```
