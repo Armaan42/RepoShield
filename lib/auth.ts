@@ -18,6 +18,7 @@ export const auth = betterAuth({
             clientSecret: process.env.GITHUB_CLIENT_SECRET!,
             scope: ["repo"]
         }
+    },
     trustedOrigins: [
         "http://localhost:3000", 
         "https://20e5-122-161-243-96.ngrok-free.app",
