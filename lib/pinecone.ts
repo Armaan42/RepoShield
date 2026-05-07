@@ -1,8 +1,19 @@
 import { Pinecone } from "@pinecone-database/pinecone";
 
-export const pinecone = new Pinecone({
-    apiKey: process.env.PINECONE_DB_API_KEY!
-});
+let _pinecone: Pinecone | null = null;
 
-export const pineconeIndex = pinecone.index("reposhield");
+export function getPinecone(): Pinecone {
+    if (!_pinecone) {
+        if (!process.env.PINECONE_DB_API_KEY) {
+            throw new Error("PINECONE_DB_API_KEY environment variable is not set");
+        }
+        _pinecone = new Pinecone({
+            apiKey: process.env.PINECONE_DB_API_KEY,
+        });
+    }
+    return _pinecone;
+}
 
+export function getPineconeIndex() {
+    return getPinecone().index("reposhield");
+}
