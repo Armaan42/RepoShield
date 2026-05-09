@@ -4,6 +4,25 @@
 
 📚 **[View the full Non-Technical Product Overview here!](./wiki/Product-Overview.md)**
 
+---
+
+## 👥 Our Team
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="https://github.com/Armaan42.png" width="100" height="100" style="border-radius:50%;" alt="Armaan Singh Bhau"/><br/>
+        <b>Armaan Singh Bhau</b><br/>
+        <sub>Project Lead & AI/RAG Specialist</sub>
+      </td>
+      <!-- More team members will be added here -->
+    </tr>
+  </table>
+</div>
+
+---
+
 ## Abstract
 
 The proposed project is a comprehensive, sophisticated, AI-powered platform strategically designed to automate and enhance the modern software development lifecycle by revolutionizing the traditional code review process. In fast-paced development environments, manual code reviews frequently become a severe bottleneck, heavily reliant on senior engineers and prone to inconsistencies. 
