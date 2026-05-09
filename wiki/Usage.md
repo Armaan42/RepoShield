@@ -10,7 +10,7 @@ Reposhield relies exclusively on OAuth for a seamless and secure login experienc
 
 1. Visit the Reposhield homepage.
 2. Click **Sign in with GitHub**.
-3. Authorize the application. **Better Auth** securely handles your session cookies—no passwords are required.
+3. Authorize the application. **Better Auth** securely handles your session cookies - no passwords are required.
 
 ---
 
@@ -54,8 +54,8 @@ As your team opens PRs, Reposhield tracks the results to provide gamified analyt
 2. **The Contribution Graph**: View a 7-day or 30-day trend chart (powered by Recharts). This visualizes your team's code review frequency.
 3. **The Badging Engine**: Did you fix a nasty memory leak? Did you secure an API route? The AI automatically parses its own reviews and awards you dynamic badges:
    - _Production Hazard Prevented_
-   - 🟡 _Performance Optimizer_
-   - 🟢 _Clean Code Champion_
+   - (Warning) Performance Optimizer
+   - (Success) Clean Code Champion
 
 ---
 
