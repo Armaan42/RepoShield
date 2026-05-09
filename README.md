@@ -11,10 +11,10 @@
 <div align="center">
   <table>
     <tr>
-      <td align="center">
-        <img src="https://github.com/Armaan42.png" width="100" height="100" style="border-radius:50%;" alt="Armaan Singh Bhau"/><br/>
+      <td align="center" style="padding: 20px;">
+        <img src="./team/armaan.jpg" width="120" height="120" style="border-radius:50%; object-fit:cover; object-position:center top; border: 3px solid #3b82f6;" alt="Armaan Singh Bhau"/><br/><br/>
         <b>Armaan Singh Bhau</b><br/>
-        <sub>Project Lead & AI/RAG Specialist</sub>
+        <sub>🧠 Project Lead & AI/RAG Specialist</sub>
       </td>
       <!-- More team members will be added here -->
     </tr>
