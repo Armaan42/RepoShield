@@ -2,11 +2,11 @@
 
 **RepoShield: Developed an AI-Powered Automated Code Review Platform with Integrated Application Security Auditing**
 
-📚 **[View the full Non-Technical Product Overview here!](./wiki/Product-Overview.md)**
+**[View the full Non-Technical Product Overview here!](./wiki/Product-Overview.md)**
 
 ---
 
-## 👥 Our Team
+## Our Team
 
 <div align="center">
   <table>
