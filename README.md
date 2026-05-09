@@ -14,7 +14,12 @@
       <td align="center" style="padding: 20px;">
         <img src="./team/armaan-circle.png" width="120" height="120" alt="Armaan Singh Bhau"/><br/><br/>
         <b>Armaan Singh Bhau</b><br/>
-        <sub>🧠 Project Lead & AI/RAG Specialist</sub>
+        <sub>Project Lead & AI/RAG Specialist</sub>
+      </td>
+      <td align="center" style="padding: 20px;">
+        <img src="./team/ansh-circle.png" width="120" height="120" alt="Ansh Jamwal"/><br/><br/>
+        <b>Ansh Jamwal</b><br/>
+        <sub>Infrastructure & Backend Engineer</sub>
       </td>
       <!-- More team members will be added here -->
     </tr>
