@@ -12,7 +12,7 @@
   <table>
     <tr>
       <td align="center" style="padding: 20px;">
-        <img src="./team/armaan.jpg" width="120" height="120" style="border-radius:50%; object-fit:cover; object-position:center top; border: 3px solid #3b82f6;" alt="Armaan Singh Bhau"/><br/><br/>
+        <img src="./team/armaan-circle.png" width="120" height="120" alt="Armaan Singh Bhau"/><br/><br/>
         <b>Armaan Singh Bhau</b><br/>
         <sub>🧠 Project Lead & AI/RAG Specialist</sub>
       </td>
