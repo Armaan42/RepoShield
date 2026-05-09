@@ -12,7 +12,7 @@
   <table>
     <tr>
       <td align="center">
-        <img src="./team/armaan.jpg" width="100" height="100" style="border-radius:50%;object-fit:cover;" alt="Armaan Singh Bhau"/><br/>
+        <img src="https://github.com/Armaan42.png" width="100" height="100" style="border-radius:50%;" alt="Armaan Singh Bhau"/><br/>
         <b>Armaan Singh Bhau</b><br/>
         <sub>Project Lead & AI/RAG Specialist</sub>
       </td>
