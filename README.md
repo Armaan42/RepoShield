@@ -107,6 +107,7 @@ Ultimately, this innovative solution significantly reduces the extensive time an
 
 ---
 
+
 ## Proposed Solution
 
 - **Platform & Integration**: Developed a web-based dashboard that connects to GitHub repositories and uses webhooks to automatically monitor and retrieve new code changes when pull requests are submitted.
@@ -306,6 +307,7 @@ Copy `.env.example` to `.env` and fill in the required keys:
 - `GEMINI_API_KEY` (For AI reviews)
 - `POLAR_ACCESS_TOKEN`, `POLAR_WEBHOOK_SECRET` (For payments)
 - `GITHUB_APP_ID`, `GITHUB_PRIVATE_KEY`, `GITHUB_WEBHOOK_SECRET` (For the GitHub App)
+
 
 ### 3. Database Setup
 ```bash
