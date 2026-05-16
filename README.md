@@ -26,7 +26,11 @@
         <b>Suryansh Singh Jasrotia</b><br/>
         <sub>Frontend & Analytics Developer</sub>
       </td>
-      <!-- More team members will be added here -->
+      <td align="center" style="padding: 20px;">
+        <img src="./team/riya-circle.png" width="120" height="120" alt="Riya Warikoo"/><br/><br/>
+        <b>Riya Warikoo</b><br/>
+        <sub>Security & Business Logic Engineer</sub>
+      </td>
     </tr>
   </table>
 </div>
