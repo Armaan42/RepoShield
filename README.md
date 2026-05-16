@@ -23,7 +23,7 @@
       </td>
       <td align="center" style="padding: 20px;">
         <img src="./team/suryansh-circle.png" width="120" height="120" alt="Suryansh"/><br/><br/>
-        <b>Suryansh</b><br/>
+        <b>Suryansh Singh Jasrotia</b><br/>
         <sub>Frontend & Analytics Developer</sub>
       </td>
       <!-- More team members will be added here -->
